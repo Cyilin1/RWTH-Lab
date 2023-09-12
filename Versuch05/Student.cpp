@@ -13,24 +13,14 @@
  * @param geburtstag Geburtstag
  * @param adresse Adresse
  */
-Student::Student(unsigned int matNr,
-                 std::string name,
-                 std::string geburtstag,
-                 std::string adresse)
-  : matNr(matNr)
-  , name(name)
-  , geburtstag(geburtstag)
-  , adresse(adresse)
+Student::Student(unsigned int matNr, std::string name, std::string geburtstag, std::string adresse) :
+matNr(matNr), name(name), geburtstag(geburtstag), adresse(adresse)
 { }
 
 /**
  * @brief Standardkonstruktor, der einen leeren Studenten erstellt
  */
-Student::Student()
-  : matNr(0)
-  , name("")
-  , geburtstag("")
-  , adresse("")
+Student::Student() : matNr(0), name(""), geburtstag(""), adresse("")
 { }
 
 /**

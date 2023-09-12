@@ -19,18 +19,18 @@ Liste::Liste(): front(nullptr), back(nullptr)
  */
 void Liste::pushBack(Student pData)
 {
-    ListenElement* neuesElement = new ListenElement(pData, nullptr);
+  ListenElement* neuesElement = new ListenElement(pData, nullptr, back);
 
-    if (front == nullptr)                                       // Liste leer?
-    {
-        front = neuesElement;
-        back = neuesElement;
-    }
-    else
-    {
-        back->setNext(neuesElement);
-        back = neuesElement;
-    }
+  if (back != nullptr) {
+    back->setNext(neuesElement);
+  }
+
+  back = neuesElement;
+
+  if (front == nullptr) // Liste leer?
+  {
+    front = neuesElement;
+  }
 }
 
 /**
@@ -50,8 +50,9 @@ void Liste::popFront()
     }
     else
     {
-        front = front->getNext();
-        delete cursor;
+      front = front->getNext();
+      front->setPrevious(nullptr);
+      delete cursor;
     }
 }
 
@@ -70,7 +71,7 @@ bool Liste::empty()
 }
 
 /**
- * @brief Gibt die Daten des ersten Listenelements in der Liste zurueck
+ * @brief 输出列表的第一个数据
  *
  * @return Zeiger auf ein Objekt der Klasse Student
  */
@@ -80,17 +81,33 @@ Student Liste::dataFront()
 }
 
 /**
- * @brief Ausgabe der Liste vom ersten bis zum letzten Element.
+ * @brief 正序输出所有元素
  *
  * @return void
  */
 void Liste::ausgabeVorwaerts() const
 {
-    ListenElement* cursor = front;
+  // ListenElement 看成链表中的一个结点
+  ListenElement* cursor = front;
 
-    while (cursor != nullptr)
-    {
-    	cursor->getData().ausgabe();
-        cursor = cursor->getNext();
-    }
+  while (cursor != nullptr) {
+    cursor->getData().ausgabe(); // 用于输出
+    cursor = cursor->getNext();  // 用于找到下一个元素
+  }
+}
+
+void
+Liste::outputInverse() const
+{
+  ListenElement* cursor = back;
+  while (cursor != nullptr) {
+    cursor->getData().ausgabe();
+    cursor = cursor->getPrevious();
+  }
+}
+
+ListenElement*
+Liste::getBack()
+{
+  return back;
 }
