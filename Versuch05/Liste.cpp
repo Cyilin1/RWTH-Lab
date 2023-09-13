@@ -111,3 +111,47 @@ Liste::getBack()
 {
   return back;
 }
+
+void Liste::removeElement(ListenElement *element)
+{
+  if (element == nullptr) {
+    return;
+  }
+
+  if (element == front) {
+    popFront(); // ??????????????? popFront() ?????
+    return;
+  }
+
+  if (element == back) {
+    back = back->getPrevious(); // ???????????????? back ??
+  }
+
+  ListenElement *previous = element->getPrevious();
+  ListenElement *next = element->getNext();
+
+  if (previous != nullptr) {
+    previous->setNext(next);
+  }
+
+  if (next != nullptr) {
+    next->setPrevious(previous);
+  }
+
+  delete element;
+}
+
+void Liste::pushFront(Student pData)
+{
+  ListenElement *newElement = new ListenElement(pData, front, nullptr);
+
+  if (front != nullptr) {
+    front->setPrevious(newElement);
+  }
+
+  front = newElement;
+
+  if (back == nullptr) {
+    back = newElement;
+  }
+}

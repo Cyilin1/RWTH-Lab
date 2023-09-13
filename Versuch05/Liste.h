@@ -25,6 +25,8 @@ public:
     void ausgabeVorwaerts() const; // 正序输出
     void outputInverse() const;    // 逆序输出
     ListenElement* getBack();
+    void removeElement(ListenElement *element);
+    void pushFront(Student pData);
 };
 
 #endif /*LISTE_H_*/

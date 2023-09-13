@@ -114,26 +114,57 @@ int main()
           break;
 
           // (5): delete element by StudentID
-        case '5':
+        case '5': {
           unsigned int matNr;
-          std::cout << "Bitte geben Sie die Matrikelnummer des zu l?schenden "
-                       "Studenten ein: ";
+          std::cout << "Bitte geben Sie die Matrikelnummer des zu löschenden Studenten ein: ";
           std::cin >> matNr;
           std::cin.ignore(10, '\n');
 
           bool found = false;
-          studentenListe.outputInverse();
-          ListenElement* cur = studentenList;
+          ListenElement *current = studentenListe.getBack(); // ?????????
 
-          while (cur != nullptr) {
-            if (cur->getData().getMatNr() == matNr) {
-              found = true;
-              std::cout << "student is found!" << std::endl;
-              cur->getData().ausgabe();
-              studentenListe.
+          while (current != nullptr) {
+            if (current->getData().getMatNr() == matNr) {
+                found = true;
+                std::cout << "Gefunden und geloescht:" << std::endl;
+                current->getData().ausgabe();
+                studentenListe.removeElement(current);
+                break; // ????????????
             }
+            current = current->getPrevious();
+          }
+
+          if (!found) {
+            std::cout << "Student mit Matrikelnummer " << matNr
+                      << " nicht gefunden oder Liste ist leer." << std::endl;
           }
           break;
+        }
+        case '6': {
+          unsigned int matNr;
+          std::string name = "";
+          std::string geburtstag = "";
+          std::string adresse = "";
+
+          std::cout << "please input the student's information you" << std::endl;
+          std::cout << "Name: ";
+          getline(std::cin, name); // Ganze Zeile einlesen inklusive aller Leerzeichen
+
+          std::cout << "Geburtsdatum: ";
+          getline(std::cin, geburtstag);
+
+          std::cout << "Adresse: ";
+          getline(std::cin, adresse);
+
+          std::cout << "Matrikelnummer: ";
+          std::cin >> matNr;
+          std::cin.ignore(10, '\n');
+
+          student = Student(matNr, name, geburtstag, adresse);
+
+          studentenListe.pushFront(student); // ?????????
+          break;
+        }
         case '0':
           std::cout << "Das Programm wird nun beendet";
           break;
@@ -141,7 +172,7 @@ int main()
         default:
           std::cout << "Falsche Eingabe, bitte nochmal";
           break;
-      }
+        }
     } while (abfrage != '0');
 
     return 0;

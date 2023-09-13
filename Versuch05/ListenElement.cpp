@@ -3,6 +3,7 @@
 //////////////////////////////////////////////////////////////////////////////
 
 #include "ListenElement.h"
+#include "Liste.h"
 
 /**
  * @brief Konstruktor, der ein neues Listenelemente mit allen Werten erstellt
@@ -61,41 +62,45 @@ Student ListenElement::getData() const
  */
 ListenElement* ListenElement::getNext() const
 {
-  return next;
+    return next;
 }
 
+/**
+ * @brief ListenElement::getPrevious
+ * @return 
+ */
 ListenElement*
 ListenElement::getPrevious() const
 {
   return pre;
 }
 
-void
-Liste::removeElement(ListenElement* element)
-{
-  if (element == nullptr) {
-    return;
-  }
+//void
+//Liste::removeElement(ListenElement* element)
+//{
+//  if (element == nullptr) {
+//    return;
+//  }
 
-  if (element == front) {
-    popFront(); // 如果要删除的是第一个元素，使用 popFront() 函数删除它
-    return;
-  }
+//  if (element == front) {
+//    popFront(); // 如果要删除的是第一个元素，使用 popFront() 函数删除它
+//    return;
+//  }
 
-  if (element == back) {
-    back = back->getPrevious(); // 如果要删除的是最后一个元素，更新 back 指针
-  }
+//  if (element == back) {
+//    back = back->getPrevious(); // 如果要删除的是最后一个元素，更新 back 指针
+//  }
 
-  ListenElement* previous = element->getPrevious();
-  ListenElement* next = element->getNext();
+//  ListenElement* previous = element->getPrevious();
+//  ListenElement* next = element->getNext();
 
-  if (previous != nullptr) {
-    previous->setNext(next);
-  }
+//  if (previous != nullptr) {
+//    previous->setNext(next);
+//  }
 
-  if (next != nullptr) {
-    next->setPrevious(previous);
-  }
+//  if (next != nullptr) {
+//    next->setPrevious(previous);
+//  }
 
-  delete element;
-}
+//  delete element;
+//}
