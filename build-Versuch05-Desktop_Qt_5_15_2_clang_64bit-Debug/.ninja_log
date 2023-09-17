@@ -1,0 +1,7 @@
+# ninja log v5
+3	188	1694605280053925437	CMakeFiles/untitled4.dir/main.cpp.o	4b1a713655d3c4e5
+188	217	1694605280084654551	untitled4	ea43d30d5d02ce6a
+0	269	1694538094582420351	CMakeFiles/untitled4.dir/Student.cpp.o	fbe04218686df76d
+3	258	1694605084455173435	CMakeFiles/untitled4.dir/Liste.cpp.o	ad8e1708411699d0
+4	244	1694605084440798807	CMakeFiles/untitled4.dir/ListenElement.cpp.o	7008751ca6b80d4d
+0	42	1694605281042493742	build.ninja	b9f9c2d99d28169b

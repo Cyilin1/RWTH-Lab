@@ -116,39 +116,40 @@ int main()
           // (5): delete element by StudentID
         case '5': {
           unsigned int matNr;
-          std::cout << "Bitte geben Sie die Matrikelnummer des zu löschenden Studenten ein: ";
+          std::cout << "please input a matNr(0-4294967295)" << std::endl;
           std::cin >> matNr;
           std::cin.ignore(10, '\n');
 
           bool found = false;
-          ListenElement *current = studentenListe.getBack(); // ?????????
+          // ???????????
+          ListenElement *current = studentenListe.getBack();
 
           while (current != nullptr) {
             if (current->getData().getMatNr() == matNr) {
                 found = true;
-                std::cout << "Gefunden und geloescht:" << std::endl;
                 current->getData().ausgabe();
                 studentenListe.removeElement(current);
-                break; // ????????????
+                break; //
             }
             current = current->getPrevious();
           }
 
           if (!found) {
-            std::cout << "Student mit Matrikelnummer " << matNr
-                      << " nicht gefunden oder Liste ist leer." << std::endl;
+            std::cout << "NO STUDENT ID IN THIS DATABASE!" << std::endl;
           }
           break;
         }
+
+          // ???????????
         case '6': {
           unsigned int matNr;
           std::string name = "";
           std::string geburtstag = "";
           std::string adresse = "";
 
-          std::cout << "please input the student's information you" << std::endl;
+          std::cout << "please input the student's information you want" << std::endl;
           std::cout << "Name: ";
-          getline(std::cin, name); // Ganze Zeile einlesen inklusive aller Leerzeichen
+          getline(std::cin, name);
 
           std::cout << "Geburtsdatum: ";
           getline(std::cin, geburtstag);
@@ -160,9 +161,10 @@ int main()
           std::cin >> matNr;
           std::cin.ignore(10, '\n');
 
+          //??????element
           student = Student(matNr, name, geburtstag, adresse);
 
-          studentenListe.pushFront(student); // ?????????
+          studentenListe.pushFront(student);
           break;
         }
         case '0':

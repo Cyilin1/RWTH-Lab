@@ -19,7 +19,7 @@ private:
 public:
     Liste();                                                     // Konstruktor mit Zeigerinitialisierung
     void pushBack(Student pData);                                // 插入元素
-    void popFront();               // 删除一个元素
+    void popFront();                                             // 删除开头的第一个元素
     bool empty();                  // 判断列表是否为空
     Student dataFront();           // 输出列表的第一个数据
     void ausgabeVorwaerts() const; // 正序输出

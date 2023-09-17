@@ -1,0 +1,158 @@
+## This file contains all the build statements describing the
+# compilation DAG.
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# 
+# Which is the root file.
+# =============================================================================
+
+# =============================================================================
+# Project: untitled4
+# Configurations: Debug
+# =============================================================================
+
+#############################################
+# Minimal version of Ninja required by this file
+
+ninja_required_version = 1.5
+
+
+#############################################
+# Set configuration variable for custom commands.
+
+CONFIGURATION = Debug
+# =============================================================================
+# Include auxiliary files.
+
+
+#############################################
+# Include rules file.
+
+include CMakeFiles/rules.ninja
+
+# =============================================================================
+
+#############################################
+# Logical path to working directory; prefix for absolute paths.
+
+cmake_ninja_workdir = /Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/build-Versuch05-Desktop_Qt_5_15_2_clang_64bit-Debug/
+# =============================================================================
+# Object build statements for EXECUTABLE target untitled4
+
+
+#############################################
+# Order-only phony target for untitled4
+
+build cmake_object_order_depends_target_untitled4: phony || CMakeFiles/untitled4.dir
+
+build CMakeFiles/untitled4.dir/Liste.cpp.o: CXX_COMPILER__untitled4_Debug /Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/Versuch05/Liste.cpp || cmake_object_order_depends_target_untitled4
+  DEP_FILE = CMakeFiles/untitled4.dir/Liste.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++11
+  OBJECT_DIR = CMakeFiles/untitled4.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled4.dir
+
+build CMakeFiles/untitled4.dir/Student.cpp.o: CXX_COMPILER__untitled4_Debug /Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/Versuch05/Student.cpp || cmake_object_order_depends_target_untitled4
+  DEP_FILE = CMakeFiles/untitled4.dir/Student.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++11
+  OBJECT_DIR = CMakeFiles/untitled4.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled4.dir
+
+build CMakeFiles/untitled4.dir/ListenElement.cpp.o: CXX_COMPILER__untitled4_Debug /Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/Versuch05/ListenElement.cpp || cmake_object_order_depends_target_untitled4
+  DEP_FILE = CMakeFiles/untitled4.dir/ListenElement.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++11
+  OBJECT_DIR = CMakeFiles/untitled4.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled4.dir
+
+build CMakeFiles/untitled4.dir/main.cpp.o: CXX_COMPILER__untitled4_Debug /Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/Versuch05/main.cpp || cmake_object_order_depends_target_untitled4
+  DEP_FILE = CMakeFiles/untitled4.dir/main.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++11
+  OBJECT_DIR = CMakeFiles/untitled4.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled4.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target untitled4
+
+
+#############################################
+# Link the executable untitled4
+
+build untitled4: CXX_EXECUTABLE_LINKER__untitled4_Debug CMakeFiles/untitled4.dir/Liste.cpp.o CMakeFiles/untitled4.dir/Student.cpp.o CMakeFiles/untitled4.dir/ListenElement.cpp.o CMakeFiles/untitled4.dir/main.cpp.o
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk
+  OBJECT_DIR = CMakeFiles/untitled4.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = untitled4
+  TARGET_PDB = untitled4.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/build-Versuch05-Desktop_Qt_5_15_2_clang_64bit-Debug && /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/bin/ccmake -S/Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/Versuch05 -B/Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/build-Versuch05-Desktop_Qt_5_15_2_clang_64bit-Debug
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build edit_cache: phony CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/build-Versuch05-Desktop_Qt_5_15_2_clang_64bit-Debug && /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/bin/cmake --regenerate-during-build -S/Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/Versuch05 -B/Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/build-Versuch05-Desktop_Qt_5_15_2_clang_64bit-Debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build rebuild_cache: phony CMakeFiles/rebuild_cache.util
+
+# =============================================================================
+# Target aliases.
+
+# =============================================================================
+# Folder targets.
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/build-Versuch05-Desktop_Qt_5_15_2_clang_64bit-Debug
+
+build all: phony untitled4
+
+# =============================================================================
+# Built-in targets
+
+
+#############################################
+# Re-run CMake if any of its inputs changed.
+
+build build.ninja: RERUN_CMAKE | .qtc/package-manager/auto-setup.cmake /Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/Versuch05/CMakeLists.txt /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Compiler/AppleClang-CXX.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Compiler/Clang.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Compiler/GNU.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Platform/Apple-AppleClang-CXX.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Platform/Apple-Clang-CXX.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Platform/Apple-Clang.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Platform/Darwin-Initialize.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Platform/Darwin.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake
+  pool = console
+
+
+#############################################
+# A missing CMake input file is not an error.
+
+build .qtc/package-manager/auto-setup.cmake /Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/Versuch05/CMakeLists.txt /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Compiler/AppleClang-CXX.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Compiler/Clang.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Compiler/GNU.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Platform/Apple-AppleClang-CXX.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Platform/Apple-Clang-CXX.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Platform/Apple-Clang.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Platform/Darwin-Initialize.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Platform/Darwin.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake: phony
+
+
+#############################################
+# Clean all the built files.
+
+build clean: CLEAN
+
+
+#############################################
+# Print all primary targets available.
+
+build help: HELP
+
+
+#############################################
+# Make the all target the default.
+
+default all
