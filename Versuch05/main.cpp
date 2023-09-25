@@ -1,181 +1,23 @@
-/** @mainpage
- *
- * Praktikum Informatik 1 MMXXII <BR>
- * Versuch 5: Dynamische Datenstrukturen
- *
- */
+// Simple factorial calculator - without error checking
 
-#include <iostream>
-#include <string>
+#include <stdio.h>
 
-#include "Liste.h"
-#include "Student.h"
-
-int main()
+int main(void)
 {
-    Liste studentenListe;
-    Student student;
+    int n;
+    printf("n  = ");
+    scanf("%d", &n);
 
-    char abfrage;
-    std::cout << "Wollen Sie die Liste selbst fuellen? (j)/(n) ";
-    std::cin >> abfrage;
-    std::cin.ignore(10, '\n');
+    int fac = 1;
+    int i = 1;
 
-    if (abfrage != 'j')
-    {
-      student = Student(34567, "Harro Simoneit", "19.06.1971", "Am Markt 1");
-      studentenListe.pushBack(student);
-      student = Student(74567, "Vera Schmitt", "23.07.1982", "Gartenstr. 23");
-      studentenListe.pushBack(student);
-      student = Student(12345, "Siggi Baumeister", "23.04.1983", "Ahornst.55");
-      studentenListe.pushBack(student);
-      student = Student(64567, "Paula Peters", "9.01.1981", "Weidenweg 12");
-      studentenListe.pushBack(student);
-      student =
-        Student(23456, "Walter Rodenstock", "15.10.1963", "Wüllnerstr.9");
-      studentenListe.pushBack(student);
+loop:
+    if (i <= n) {
+        fac *= i;
+        i++;
+        goto loop;
     }
 
-    do {
-      std::cout << "\nMenue:" << std::endl
-                << "-----------------------------" << std::endl
-                << "(1): Datenelement hinten hinzufuegen" << std::endl
-                << "(2): Datenelement vorne entfernen" << std::endl
-                << "(3): Datenbank ausgeben" << std::endl
-                << "(4): Output inversely" << std::endl
-                << "(5): delete element by StudentID" << std::endl
-                << "(6): insert" << std::endl
-                << "(0): Beenden" << std::endl;
-      std::cin >> abfrage;
-      std::cin.ignore(10, '\n');
-
-      switch (abfrage) {
-        // Datenelement hinten hinzufuegen
-        case '1': {
-          unsigned int matNr = 0;
-          std::string name = "";
-          std::string geburtstag = "";
-          std::string adresse = "";
-          // input Student's name
-          std::cout << "Bitte geben sie die Daten für den Studenten "
-                       "ein.\nName: ";
-          getline(std::cin,
-                  name); // ganze Zeile einlesen inklusive aller Leerzeichen
-
-          std::cout << "Geburtsdatum: ";
-          getline(std::cin, geburtstag);
-
-          std::cout << "Adresse: ";
-          getline(std::cin, adresse);
-
-          std::cout << "Matrikelnummer: ";
-          std::cin >> matNr;
-          std::cin.ignore(10, '\n');
-
-          student = Student(matNr, name, geburtstag, adresse);
-
-          studentenListe.pushBack(student);
-        } break;
-
-        // Datenelement vorne entfernen
-        case '2': {
-          if (!studentenListe.empty()) {
-            student = studentenListe.dataFront();
-            // a student has been deleted;
-            std::cout << "Der folgende Student ist geloescht worden:"
-                      << std::endl;
-            student.ausgabe();
-            studentenListe.popFront();
-          } else {
-            std::cout << "Die Liste ist leer!\n";
-          }
-        } break;
-
-        // output
-        case '3':
-          if (!studentenListe.empty()) {
-            std::cout << "Inhalt der Liste in fortlaufender Reihenfolge:"
-                      << std::endl;
-            studentenListe.ausgabeVorwaerts();
-          } else {
-            std::cout << "Die Liste ist leer!\n\n";
-          }
-          break;
-
-          // output inversely
-        case '4':
-          if (!studentenListe.empty()) {
-            // output
-            std::cout << "the output Seq of reverse is:" << std::endl;
-            studentenListe.outputInverse();
-          } else {
-            std::cout << "Die Liste ist leer!\n\n";
-          }
-          break;
-
-          // (5): delete element by StudentID
-        case '5': {
-          unsigned int matNr;
-          std::cout << "please input a matNr(0-4294967295)" << std::endl;
-          std::cin >> matNr;
-          std::cin.ignore(10, '\n');
-
-          bool found = false;
-          // ???????????
-          ListenElement *current = studentenListe.getBack();
-
-          while (current != nullptr) {
-            if (current->getData().getMatNr() == matNr) {
-                found = true;
-                current->getData().ausgabe();
-                studentenListe.removeElement(current);
-                break; //
-            }
-            current = current->getPrevious();
-          }
-
-          if (!found) {
-            std::cout << "NO STUDENT ID IN THIS DATABASE!" << std::endl;
-          }
-          break;
-        }
-
-          // ???????????
-        case '6': {
-          unsigned int matNr;
-          std::string name = "";
-          std::string geburtstag = "";
-          std::string adresse = "";
-
-          std::cout << "please input the student's information you want" << std::endl;
-          std::cout << "Name: ";
-          getline(std::cin, name);
-
-          std::cout << "Geburtsdatum: ";
-          getline(std::cin, geburtstag);
-
-          std::cout << "Adresse: ";
-          getline(std::cin, adresse);
-
-          std::cout << "Matrikelnummer: ";
-          std::cin >> matNr;
-          std::cin.ignore(10, '\n');
-
-          //??????element
-          student = Student(matNr, name, geburtstag, adresse);
-
-          studentenListe.pushFront(student);
-          break;
-        }
-        case '0':
-          std::cout << "Das Programm wird nun beendet";
-          break;
-
-        default:
-          std::cout << "Falsche Eingabe, bitte nochmal";
-          break;
-        }
-    } while (abfrage != '0');
-
+    printf("n! = %d\n", fac);
     return 0;
 }

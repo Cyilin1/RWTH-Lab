@@ -207,7 +207,7 @@ CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 QT_CREATOR_SKIP_PACKAGE_MANAGER_SETUP:BOOL=OFF
 
 //No help, variable specified on the command line.
-QT_QMAKE_EXECUTABLE:FILEPATH=/Users/caiyilin/Qt/5.15.2/clang_64/bin/qmake
+QT_QMAKE_EXECUTABLE:FILEPATH=/Users/caiyilin/Qt/6.5.2/macos/bin/qmake
 
 //Value Computed by CMake
 untitled4_BINARY_DIR:STATIC=/Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/build-Versuch05-Desktop_Qt_5_15_2_clang_64bit-Debug

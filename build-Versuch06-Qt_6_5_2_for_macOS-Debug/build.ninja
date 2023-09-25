@@ -1,0 +1,146 @@
+## This file contains all the build statements describing the
+# compilation DAG.
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# 
+# Which is the root file.
+# =============================================================================
+
+# =============================================================================
+# Project: Versuch06
+# Configurations: Debug
+# =============================================================================
+
+#############################################
+# Minimal version of Ninja required by this file
+
+ninja_required_version = 1.5
+
+
+#############################################
+# Set configuration variable for custom commands.
+
+CONFIGURATION = Debug
+# =============================================================================
+# Include auxiliary files.
+
+
+#############################################
+# Include rules file.
+
+include CMakeFiles/rules.ninja
+
+# =============================================================================
+
+#############################################
+# Logical path to working directory; prefix for absolute paths.
+
+cmake_ninja_workdir = /Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/build-Versuch06-Qt_6_5_2_for_macOS-Debug/
+# =============================================================================
+# Object build statements for EXECUTABLE target Versuch06
+
+
+#############################################
+# Order-only phony target for Versuch06
+
+build cmake_object_order_depends_target_Versuch06: phony || CMakeFiles/Versuch06.dir
+
+build CMakeFiles/Versuch06.dir/Student.cpp.o: CXX_COMPILER__Versuch06_Debug /Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/Versuch06/Student.cpp || cmake_object_order_depends_target_Versuch06
+  DEP_FILE = CMakeFiles/Versuch06.dir/Student.cpp.o.d
+  FLAGS = -DQT_QML_DEBUG -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -mmacosx-version-min=13.5 -std=gnu++11
+  OBJECT_DIR = CMakeFiles/Versuch06.dir
+  OBJECT_FILE_DIR = CMakeFiles/Versuch06.dir
+
+build CMakeFiles/Versuch06.dir/main.cpp.o: CXX_COMPILER__Versuch06_Debug /Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/Versuch06/main.cpp || cmake_object_order_depends_target_Versuch06
+  DEP_FILE = CMakeFiles/Versuch06.dir/main.cpp.o.d
+  FLAGS = -DQT_QML_DEBUG -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -mmacosx-version-min=13.5 -std=gnu++11
+  OBJECT_DIR = CMakeFiles/Versuch06.dir
+  OBJECT_FILE_DIR = CMakeFiles/Versuch06.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target Versuch06
+
+
+#############################################
+# Link the executable Versuch06
+
+build Versuch06: CXX_EXECUTABLE_LINKER__Versuch06_Debug CMakeFiles/Versuch06.dir/Student.cpp.o CMakeFiles/Versuch06.dir/main.cpp.o
+  FLAGS = -DQT_QML_DEBUG -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -mmacosx-version-min=13.5
+  OBJECT_DIR = CMakeFiles/Versuch06.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = Versuch06
+  TARGET_PDB = Versuch06.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/build-Versuch06-Qt_6_5_2_for_macOS-Debug && /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/bin/ccmake -S/Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/Versuch06 -B/Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/build-Versuch06-Qt_6_5_2_for_macOS-Debug
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build edit_cache: phony CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/build-Versuch06-Qt_6_5_2_for_macOS-Debug && /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/bin/cmake --regenerate-during-build -S/Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/Versuch06 -B/Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/build-Versuch06-Qt_6_5_2_for_macOS-Debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build rebuild_cache: phony CMakeFiles/rebuild_cache.util
+
+# =============================================================================
+# Target aliases.
+
+# =============================================================================
+# Folder targets.
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/build-Versuch06-Qt_6_5_2_for_macOS-Debug
+
+build all: phony Versuch06
+
+# =============================================================================
+# Built-in targets
+
+
+#############################################
+# Re-run CMake if any of its inputs changed.
+
+build build.ninja: RERUN_CMAKE | .qtc/package-manager/auto-setup.cmake /Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/Versuch06/CMakeLists.txt /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Compiler/AppleClang-CXX.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Compiler/Clang.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Compiler/GNU.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Platform/Apple-AppleClang-CXX.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Platform/Apple-Clang-CXX.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Platform/Apple-Clang.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Platform/Darwin-Initialize.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Platform/Darwin.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake
+  pool = console
+
+
+#############################################
+# A missing CMake input file is not an error.
+
+build .qtc/package-manager/auto-setup.cmake /Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/Versuch06/CMakeLists.txt /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Compiler/AppleClang-CXX.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Compiler/Clang.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Compiler/GNU.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Platform/Apple-AppleClang-CXX.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Platform/Apple-Clang-CXX.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Platform/Apple-Clang.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Platform/Darwin-Initialize.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Platform/Darwin.cmake /Users/caiyilin/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.24/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake: phony
+
+
+#############################################
+# Clean all the built files.
+
+build clean: CLEAN
+
+
+#############################################
+# Print all primary targets available.
+
+build help: HELP
+
+
+#############################################
+# Make the all target the default.
+
+default all
