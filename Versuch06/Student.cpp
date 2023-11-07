@@ -2,8 +2,8 @@
 // Praktikum Informatik 1 MMXXII
 //////////////////////////////////////////////////////////////////////////////
 
-#include <iostream>
 #include "Student.h"
+#include <iostream>
 
 /**
  * @brief Konstruktor, der einen neuen Studenten mit allen Werten erstellt
@@ -13,15 +13,22 @@
  * @param geburtstag Geburtstag
  * @param adresse Adresse
  */
-Student::Student(unsigned int matNr, std::string name, std::string geburtstag, std::string adresse) :
-matNr(matNr), name(name), geburtstag(geburtstag), adresse(adresse)
-{ }
+Student::Student(unsigned int matNr, std::string name, std::string geburtstag, std::string adresse)
+    : matNr(matNr)
+    , name(name)
+    , geburtstag(geburtstag)
+    , adresse(adresse)
+{}
 
 /**
  * @brief Standardkonstruktor, der einen leeren Studenten erstellt
  */
-Student::Student() : matNr(0), name(""), geburtstag(""), adresse("")
-{ }
+Student::Student()
+    : matNr(0)
+    , name("")
+    , geburtstag("")
+    , adresse("")
+{}
 
 /**
  * @brief Gibt die Matrikelnummer des Studenten zurueck
@@ -66,32 +73,8 @@ std::string Student::getAdresse() const
 /**
  * @brief Gibt alle Daten des Studenten in einer Zeile aus
  */
-void Student::ausgabe(std::ostream &out) const
+void Student::ausgabe() const
 {
-    out << name << ", MatNr. " << matNr << ", geb. am " << geburtstag << ", wohnhaft in " << adresse
-        << std::endl;
-}
-
-bool Student::operator<(const Student &other)
-{
-    if (matNr < other.getMatNr()) {
-        return true;
-    }
-    return false;
-}
-
-bool Student::operator>(const Student &other)
-{
-    if (matNr > other.getMatNr()) {
-        return true;
-    }
-    return false;
-}
-
-bool Student::operator==(const Student &other)
-{
-    if (matNr == other.getMatNr()) {
-        return true;
-    }
-    return false;
+    std::cout << name << ", MatNr. " << matNr << ", geb. am " << geburtstag << ", wohnhaft in "
+              << adresse << std::endl;
 }
