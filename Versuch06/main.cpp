@@ -139,7 +139,7 @@ int main()
             studentenListe.insert(studentenListe.begin(), student);
             break;
         }
-            //从文件中读取数据
+        //从文件中读取数据
         case '7': {
             std::string fileName;
             std::cout << "Bitte geben Sie den Dateinamen ein, um Daten zu lesen: ";

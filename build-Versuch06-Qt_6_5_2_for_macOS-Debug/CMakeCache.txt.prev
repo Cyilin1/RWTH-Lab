@@ -139,7 +139,7 @@ CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 CMAKE_PROJECT_INCLUDE_BEFORE:FILEPATH=/Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/build-Versuch06-Qt_6_5_2_for_macOS-Debug/.qtc/package-manager/auto-setup.cmake
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=untitled4
+CMAKE_PROJECT_NAME:STATIC=Versuch06
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib
@@ -208,6 +208,15 @@ QT_CREATOR_SKIP_PACKAGE_MANAGER_SETUP:BOOL=OFF
 
 //No help, variable specified on the command line.
 QT_QMAKE_EXECUTABLE:FILEPATH=/Users/caiyilin/Qt/6.5.2/macos/bin/qmake
+
+//Value Computed by CMake
+Versuch06_BINARY_DIR:STATIC=/Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/build-Versuch06-Qt_6_5_2_for_macOS-Debug
+
+//Value Computed by CMake
+Versuch06_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+Versuch06_SOURCE_DIR:STATIC=/Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/Versuch06
 
 //Value Computed by CMake
 untitled4_BINARY_DIR:STATIC=/Users/caiyilin/Desktop/working/RWTH/RWTH-Lab/build-Versuch06-Qt_6_5_2_for_macOS-Debug
