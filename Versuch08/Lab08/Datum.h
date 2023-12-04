@@ -71,23 +71,23 @@ public:
      *
      * \param Datum& d: Argument auf der rechten Seite
      *
-     * \return int: Gibt die Differenz der beiden Monate in Monaten zurück
+     * \return int: number of monthdiff
      */
     int operator-(const Datum d) const;
 
     /*!
      * @brief Additionsoperator
      *
-     * \param const int: anzahlTag Anzahl der Tage, die auf das aktuelle Datum addiert werden sollen
+     * \param const int: numberDay ???????????
      *
      * \return Datum: Gibt das modifizierte Datum zurück
      */
     Datum operator+(const int anzahlTage) const;
 
 private:
-    int tag;
-    int monat;
-    int jahr;
+    int tag;   //day
+    int monat; //month
+    int jahr;  //year
 
     /*!
      * @brief Enthält die Anzahl der Tage pro Monat

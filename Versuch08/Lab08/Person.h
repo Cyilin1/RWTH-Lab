@@ -53,6 +53,7 @@ public:
 
 private:
     std::string name;
+    // birthday
     Datum geburtsdatum;
 };
 

@@ -37,7 +37,10 @@ public:
      *
      * Funktion gibt alle Informationen eines Mediums auf der Konsole aus
      */
-    void ausgabe() const;
+    // ???cout<< ??????cpp????????cout??out??
+    virtual void ausgabe(std::ostream &out) const;
+    // ???????
+    virtual void ausgabe() const;
 
     /*!
      * @brief Ausleihen-Funktion
@@ -48,10 +51,10 @@ public:
      * \return bool: true,  wenn die Ausleihbeschränkungen erfüllt sind und das Medium ausgeliehen werden kann
      *               false, wenn die Ausleihbeschränkungen nicht erfüllt sind und das Medium nicht ausgeliehen werden kann
      */
-    bool ausleihen(Person person, Datum ausleihdatum);
+    virtual bool ausleihen(Person person, Datum ausleihdatum);
 
     /*!
-     * @brief Gibt ein Medium in die Bücherei zurück
+     * @brief return book
      */
     void zurueckgeben();
 
@@ -65,6 +68,7 @@ public:
 protected:
     /*!
      * @brief Statische Variable zum Erzeugen der fortlaufenden IDs
+     * ?????? ID ?????
      */
     static unsigned int currentID;
      
@@ -84,7 +88,7 @@ protected:
     bool status;
 
     /*!
-     * @brief Datum seit dem das Medium ausgeliehen ist
+     * @brief borrowed date
      */
     Datum datumAusgeliehen;
 
@@ -94,29 +98,9 @@ protected:
     Person personAusgeliehen;
 };
 
-class Magazin : public Medium
-{
-private:
-    Datum ausgabeDatum;    // ???????????
-    std::string kategorie; // ???????????
-
-public:
-    // ???????? Magazin ???????????????????
-    Magazin(std::string initTitel, Datum initAusgabeDatum, std::string initKategorie)
-        : Medium(initTitel)
-        , ausgabeDatum(initAusgabeDatum)
-        , kategorie(initKategorie)
-    {
-        // ?????????? Medium ??????????
-    }
-
-    // ???? Medium ? ausgabe() ?????????
-    void ausgabe() const
-    {
-        Medium::ausgabe(); // ???? Medium ? ausgabe() ????????ID
-        std::cout << "Ausgabe Datum: " << ausgabeDatum << std::endl;
-        std::cout << "Kategorie: " << kategorie << std::endl;
-    }
-};
-
+//std::ostream &operator<<(std::ostream &out, Medium &med)
+//{
+//    med.ausgabe(out);
+//    return out;
+//}
 #endif

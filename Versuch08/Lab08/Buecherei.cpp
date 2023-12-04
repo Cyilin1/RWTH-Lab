@@ -12,12 +12,11 @@
 // Inhalt: Hauptprogramm
 //////////////////////////////////////////////////////////////////////////////
 
-/* Durch setzen dieser Variable können Sie entscheiden, welche Includes alle eingebunden werden sollen
- * Bei setzen auf true sind alle abgeleiteten Klassen (Buch, DVD, Magazin) vorhanden
- * Bei setzen auf false ist nur die Basisklasse Medium vorhanden
- */
- 
-#define UNTERKLASSENVORHANDEN false
+/* ????????????????????
+  * ????? true???????????DVD???????
+  * ????? false??????? Medium
+  */
+#define UNTERKLASSENVORHANDEN true
 
 #include <iostream>
 #include <string>
@@ -27,14 +26,18 @@
 
 #if UNTERKLASSENVORHANDEN
 
-    #include "Magazin.h"
-    #include "Buch.h"
-    #include "DVD.h"
+#include "DVD.h"
+#include "buch.h"
+#include "magazin.h"
 
 #endif
 
+std::ostream &operator<<(std::ostream &out, Medium &med)
+{
+    med.ausgabe(out);
+    return out;
+}
 
-// Vorwärtsdeklarationen aller vorhandenen Funktionen
 void fuelleDatenbank(std::vector<Medium*>& medien);
 void mediumHinzufuegen(std::vector<Medium*>& medien);
 void mediumEntfernen(std::vector<Medium*>& medien);
@@ -52,29 +55,31 @@ void alleMedienAusgeben(std::vector<Medium*>& medien);
 
 int main()
 {
-    // Vektor mit allen Medien der Bücherei
+    // ä¸€ç»„vector é‡Œé¢å­˜çš„æ˜¯ä¸€ä¸ªä¸ªçš„Medium*å¯¹è±¡
+    // Medium*çš„å¥½å¤„æ˜¯èŠ‚çœç©ºé—´ï¼Œåªéœ€è¦ä¼ å…¥ä¸€ä¸ªåœ°å€
     std::vector<Medium*> medien;
 
     // aktuelles Datum
     Datum aktuellesDatum;
-    std::cout << "Aktuelles Datum: " << aktuellesDatum << std::endl;
+    std::cout << "Current Datum: " << aktuellesDatum << std::endl;
 
-    // Prüfen, ob Unterklassen schon programmiert wurden (siehe bedingtes Kompilieren)
-    // entsprechend wird die Datenbank mit unterschiedlichen Medien gefüllt
+    // Check if subclasses have been implemented (see conditional compilation)
+    // The database is filled with different media types accordingly
     fuelleDatenbank(medien);
 
     char abfrage;
-    do  // Anzeige des Menüs
+    do  // Anzeige des Men?s
     {
         std::cout << std::endl
-                  << "Menue:" << std::endl
+                  << "Menu:" << std::endl
                   << "-----------------------------" << std::endl
-                  << "(1): Medium hinzufügen" << std::endl
-                  << "(2): Medium löschen" << std::endl
-                  << "(3): Datenbank ausgeben" << std::endl
-                  << "(4): Ein Medium verleihen" << std::endl
-                  << "(5): Ein Medium zurücknehmen" << std::endl
-                  << "(7): Beenden" << std::endl;
+                  << "(1): Add a medium" << std::endl
+                  << "(2): Delete a medium" << std::endl
+                  << "(3): Display the database" << std::endl
+                  << "(4): Loan a medium" << std::endl
+                  << "(5): Return a medium" << std::endl
+                  << "(6): Display borrowed media" << std::endl // New menu option
+                  << "(7): Quit" << std::endl;
 
         // Einlesen der Abfrage
         std::cin >> abfrage;
@@ -84,7 +89,7 @@ int main()
         {
 
             /////////////////////////////////////////////
-            // Ein Medium wird zur Datenbank hinzufügt //
+            // Ein Medium wird zur Datenbank hinzuf?gt //
             /////////////////////////////////////////////
             case '1':
             {
@@ -120,7 +125,7 @@ int main()
             }
 
             ////////////////////////////////////////
-            // Medium an die Bücherei zurückgeben //
+            // Medium an die B?cherei zur?ckgeben //
             ////////////////////////////////////////
             case '5':
             {
@@ -128,9 +133,14 @@ int main()
                 break;
             }
 
+            case '6': {
+                //displayBorrowedMedia(medien);
+                break;
+            }
+
             case '7':
             {
-                std::cout << "Das Menü wird nun beendet." << std::endl;
+                std::cout << "Das Men? wird nun beendet." << std::endl;
                 break;
             }
 
@@ -143,7 +153,7 @@ int main()
     }
     while (abfrage != '7');
 
-    // Beim Beenden des Programms sämtliche Medien löschen
+    // Beim Beenden des Programms s?mtliche Medien l?schen
     for (std::vector<Medium*>::iterator it = medien.begin(); it != medien.end(); it++)
     {
         delete (*it);
@@ -153,7 +163,7 @@ int main()
 }
 
 /////////////////////////////////////////////////////////////
-// Definition aller Vorwärtsdeklarierten Funktionen
+// Definition aller Vorw?rtsdeklarierten Funktionen
 
 /////////////////////////////////////////////////////////////
 // Funktion fuellt die Datenbank der Buecherei automatisch //
@@ -162,7 +172,7 @@ void fuelleDatenbank(std::vector<Medium*>& medien)
 {
 #if UNTERKLASSENVORHANDEN
     {
-        // Datenbank wird mit Medien gefüllt
+        // Datenbank wird mit Medien gef?llt
         Medium* neuesMedium = new Buch("Das Parfum", "Patrick Suskind");
         medien.push_back(neuesMedium);
 
@@ -175,7 +185,7 @@ void fuelleDatenbank(std::vector<Medium*>& medien)
         neuesMedium = new Magazin("Chip", Datum(1, 12, 2017), "Computer");
         medien.push_back(neuesMedium);
 
-        neuesMedium = new DVD("Fluch der Karibik", 12, "Actionkomödie");
+        neuesMedium = new DVD("Fluch der Karibik", 12, "Actionkom?die");
         medien.push_back(neuesMedium);
 
         neuesMedium = new Buch("Huckleberry Finn", "Mark Twain");
@@ -183,7 +193,7 @@ void fuelleDatenbank(std::vector<Medium*>& medien)
     }
 #else
     {
-        // Datenbank wird mit Medien gefüllt
+        // Datenbank wird mit Medien gef?llt
         Medium* neuesMedium = new Medium("Das Parfum");
         medien.push_back(neuesMedium);
 
@@ -197,9 +207,11 @@ void fuelleDatenbank(std::vector<Medium*>& medien)
 }
 
 /////////////////////////////////////////////////////////
-// Funktion fuegt ein neues Medium zur Datenbank hinzu //
-/////////////////////////////////////////////////////////
-void mediumHinzufuegen(std::vector<Medium*>& medien)
+/**
+ * @brief æ–°å¢ä¸€ä¸ªä¹¦ç± å¯ä»¥è¯´buch mag dvd
+ * @param medien
+ */
+void mediumHinzufuegen(std::vector<Medium *> &medien)
 {
     #if UNTERKLASSENVORHANDEN
     {
@@ -209,8 +221,8 @@ void mediumHinzufuegen(std::vector<Medium*>& medien)
                   << "(3): DVD" << std::endl;
 
         // Einlesen der aktuellen Abfrage
-        // über std::cin.ignore(10,\n) wird die "Enter-Eingabe, die für std::cin benötigt wird ignoriert
-        // Ansonsten würde der nächste getline Befehl nicht auf eine Eingabe warten...
+        // ?ber std::cin.ignore(10,\n) wird die "Enter-Eingabe, die f?r std::cin ben?tigt wird ignoriert
+        // Ansonsten w?rde der n?chste getline Befehl nicht auf eine Eingabe warten...
         char abfrage;
         std::cin >> abfrage;
         std::cin.ignore(10,'\n');
@@ -243,12 +255,12 @@ void mediumHinzufuegen(std::vector<Medium*>& medien)
                 std::cout << "Geben Sie den Titel des Magazins ein:" << std::endl;
                 getline(std::cin, titel);
 
-                // Einlesen der Magazin-Sparte
+                // Categary
                 std::string sparte;
                 std::cout << "Geben Sie die Sparte an:" << std::endl;
                 getline(std::cin, sparte);
 
-                // Einlesen des Datums (siehe überladener Eingabeoperator in der Klasse Datum)
+                // Einlesen des Datums (siehe ?berladener Eingabeoperator in der Klasse Datum)
                 Datum datumAusgabe;
                 std::cout << "Geben Sie das Erscheinungsdatum der Ausgabe an:" << std::endl;
                 std::cin >> datumAusgabe;
@@ -284,13 +296,13 @@ void mediumHinzufuegen(std::vector<Medium*>& medien)
             }
             break;
 
-            // Ungültige Eingabe
+            // Ung?ltige Eingabe
             default:
-                std::cout << "Ungültige Eingabe!" << std::endl;
+                std::cout << "Ung?ltige Eingabe!" << std::endl;
                 break;
         }
     }
-    #else //UNTERKLASSEVORHANDEN
+#else //UNTERKLASSEVORHANDEN:only medium, subclass undefined.
     {
         // Einlesen des Titels
         std::string titel;
@@ -301,59 +313,60 @@ void mediumHinzufuegen(std::vector<Medium*>& medien)
         Medium* neuesMedium = new Medium(titel);
         medien.push_back(neuesMedium);
     }
-    #endif
+#endif
 }
 
 ////////////////////////////////////////////////////
-// Funktion entfernt ein Medium aus der Datenbank //
-////////////////////////////////////////////////////
+/**
+ * @brief åˆ é™¤ä¸€ä¸ªä¹¦ç±
+ * @param medien
+ */
 void mediumEntfernen(std::vector<Medium*>& medien)
 {
-    // ID des Mediums, welches gelöscht werden soll
-
     unsigned int id;
 
-    std::cout << "Geben Sie die ID des Mediums ein, welches gelöscht werden soll: " ;
+    std::cout << "Geben Sie die ID des Mediums ein, welches gel?scht werden soll: " ;
     std::cin >> id;
     std::cin.ignore(10, '\n');
 
     bool success = false;
 
-    // Suchen des richtigen Mediums zum Löschen
-    for(std::vector<Medium*>::iterator it = medien.begin(); it != medien.end(); it++)
-    {
+    for (std::vector<Medium *>::iterator it = medien.begin(); it != medien.end(); it++) {
         if((*it)->getID() == id)
         {
-            delete (*it);  // Objekt löschen
-            medien.erase(it); // Zeiger auf das Objekt löschen
-            success = true; // Löschen war erfolgreich
+            delete (*it);  // Objekt l?schen
+            medien.erase(it); // Zeiger auf das Objekt l?schen
+            success = true; // L?schen war erfolgreich
             break; // Schleife abbrechen
         }
     }
     if(!success)
     {
-        std::cout << "Keine gültige ID!" << std::endl;
+        std::cout << "Keine g?ltige ID!" << std::endl;
     }
 }
 
 /////////////////////////////////////////////////////
-// Funktion leiht ein Medium aus der Datenbank aus //
-/////////////////////////////////////////////////////
+/**
+ * @brief å€Ÿä¹¦
+ * @param medien
+ * @param aktuellesDatum
+ */
 void mediumAusleihen(std::vector<Medium*>& medien, Datum aktuellesDatum)
 {
-    // Einlesen der ID (über std::cin.ignore(10, '\n'), wird die
+    // Einlesen der ID (?ber std::cin.ignore(10, '\n'), wird die
     // Enter-Eingabe am Ende std::cin Eingabe ignoriert
     unsigned int id;
     std::cout << "Geben Sie die ID des Mediums ein:" << std::endl;
     std::cin >> id;
     std::cin.ignore(10, '\n');
 
-    // Einlesen des Namens der Person, die das Medium ausleihen möchte
+    // reader's name
     std::string name;
     std::cout << "Geben Sie den Namen der Person ein: ";
     getline(std::cin, name);
 
-    // Einlesen des Geburtsdatums
+    // Einlesen des birthday
     Datum geburtsdatum;
     std::cout << "Geben Sie das Geburtsdatum der Person ein: (Format TT.MM.JJJJ) ";
     std::cin >> geburtsdatum;
@@ -368,21 +381,21 @@ void mediumAusleihen(std::vector<Medium*>& medien, Datum aktuellesDatum)
         if((*it)->getID() == id)
         {
             (*it)->ausleihen(person,aktuellesDatum);
-            id_vorhanden = true; //Medium wurde gefunden
+            id_vorhanden = true; // find book
         }
     }
     if (!id_vorhanden)
     {
-        std::cout << "Keine gültige ID!" << std::endl;
+        std::cout << "Keine g?ltige ID!" << std::endl;
     }
 }
 
 ////////////////////////////////////////////////////
-// Funktion gibt ein ausgeliehenes Medium zurueck //
+// Funktion return book //
 ////////////////////////////////////////////////////
 void mediumZurueckgeben(std::vector<Medium*>& medien)
 {
-    // Einlesen der ID (über std::cin.ignore(10, '\n'), wird die
+    // Einlesen der ID (?ber std::cin.ignore(10, '\n'), wird die
     // Enter-Eingabe am Ende std::cin Eingabe ignoriert)
     unsigned int id;
     std::cout << "Geben Sie die ID des Mediums ein: ";
@@ -401,16 +414,16 @@ void mediumZurueckgeben(std::vector<Medium*>& medien)
     }
     if (!id_vorhanden)
     {
-        std::cout << "Keine gültige ID!" << std::endl;
+        std::cout << "Keine g?ltige ID!" << std::endl;
     }
 }
 
 ////////////////////////////////////////////////////
-// Funktion gibt alle Medien in der Datenbank aus //
+// ???????????medium //
 ////////////////////////////////////////////////////
 void alleMedienAusgeben(std::vector<Medium*>& medien)
 {
-    std::cout << "Vorhandene Medien in der Bücherei:" << std::endl;
+    std::cout << "Vorhandene Medien in der B?cherei:" << std::endl;
 
     for (unsigned int index = 0; index < medien.size(); index++)
     {

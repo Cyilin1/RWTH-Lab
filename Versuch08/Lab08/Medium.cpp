@@ -18,22 +18,28 @@ Medium::Medium(std::string initTitel)
     ID = currentID++;
 }
 
-Medium::~Medium(void)
-{
-}
+Medium::~Medium(void) {}
 
+void Medium::ausgabe(std::ostream &out) const
+{
+    out << "ID:" << ID << std::endl;
+    out << "Titel: " << titel << std::endl;
+    if (status) {
+        out << "Status : Das Medium ist seit dem " << datumAusgeliehen << " an "
+            << personAusgeliehen.getName() << " ausgeliehen." << std::endl;
+    } else {
+        out << "Status: Medium ist zurzeit nicht verliehen." << std::endl;
+    }
+}
 
 void Medium::ausgabe() const
 {
     std::cout << "ID: " << ID << std::endl;
     std::cout << "Titel: " << titel << std::endl;
 
-    if (status)
-    {
+    if (status) {
         std::cout << "Status : Das Medium ist seit dem " << datumAusgeliehen << " an " << personAusgeliehen.getName() << " ausgeliehen." << std::endl;
-    }
-    else
-    {
+    } else {
         std::cout << "Status: Medium ist zurzeit nicht verliehen." << std::endl;
     }
 }

@@ -17,11 +17,11 @@ const int Datum::tageMonat[12] = { 31,30,31,28,31,30,31,31,30,31,30,31 };
 //Standardkonstruktor
 Datum::Datum()
 {
-    //aktuelle Zeit einlesen
+    // Current time
     time_t aktuelleZeit; 
     time(&aktuelleZeit);
 
-    //Zeiger auf aktuelles Array erstellen
+    // current date
     struct tm* aktuellesDatum = localtime(&aktuelleZeit);
 
     // Werte zuweisen
@@ -62,6 +62,7 @@ void Datum::ausgabe(std::ostream& out) const
 void Datum::eingabe(std::istream& in)
 {
     std::string DatumString;
+    // "2000.10.10"
 
     while (true) // Endlosschleife
     {
@@ -111,8 +112,7 @@ void Datum::eingabe(std::istream& in)
             // Einlesen des Jahrs
             stringstream >> jahr;
 
-            if(jahr < 1000 || jahr > 2021 )
-            {
+            if (jahr < 1000 || jahr > 2030) {
                 throw(std::string("Ungültiges Jahr!"));
             }
 
@@ -127,22 +127,28 @@ void Datum::eingabe(std::istream& in)
     }
 }
 
-
 // Überladener Subtraktions-Operator
+// 2023 01 01
+// 2013 02 04
 int Datum::operator-(const Datum datum) const
 {
     int tagDiff = tag - datum.tag;
+    // -3
     int monatDiff = monat - datum.monat;
+    // -1
     int jahrDiff = jahr - datum.jahr;
+    // 10
 
     //Differenz der Monate abrunden
     if (tagDiff < 0)
     {
         monatDiff--;
+        // -2
     }
 
     // Berechung der Monatsdifferenz zwischen beiden Daten
     return monatDiff + 12 * jahrDiff;
+    // 120 + -2 = 118
 }
 
 
@@ -154,6 +160,7 @@ Datum Datum::operator+(const int anzahl_Tage) const
     int jahrNeu = jahr;
 
     //Mehrere Monate weiterspringen
+    // const int Datum::tageMonat[12] = { 31,30,31,28,31,30,31,31,30,31,30,31 };
     while (tagNeu > tageMonat[monatNeu-1])
     {
         //Monat erhöhen und die jeweiligen Tage abziehen
@@ -170,8 +177,7 @@ Datum Datum::operator+(const int anzahl_Tage) const
     return Datum(tagNeu, monatNeu, jahrNeu);
 }
 
-//Zuweisungsoperator
-Datum& Datum::operator=(Datum& Datum)
+Datum &Datum::operator=(Datum &Datum)
 {
     jahr = Datum.jahr;
     monat = Datum.monat;
@@ -180,7 +186,10 @@ Datum& Datum::operator=(Datum& Datum)
     return *this;
 }
 
+// std::cout << "3";
+// std::cout << datum
 //Streamoperator für ostream
+// overload input/output stream function
 std::ostream& operator<<(std::ostream& out, const Datum& datum)
 {
     datum.ausgabe(out);
